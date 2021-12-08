@@ -6,13 +6,13 @@ import androidx.room.Relation
 import com.pablobarriosdevs.easytask.domain.model.SubTask
 import com.pablobarriosdevs.easytask.domain.model.Task
 
-@Entity
+
 data class TaskWithSubTasks(
     @Embedded
     val task : Task,
     @Relation(
         parentColumn = "idTask",
-        entityColumn = "idOwner"
+        entityColumn = "idOwnerTask"
     )
     val subTasks : List<SubTask>,
 )

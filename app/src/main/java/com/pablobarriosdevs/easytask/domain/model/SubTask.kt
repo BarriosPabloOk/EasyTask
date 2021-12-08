@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
         ForeignKey(
             entity = Task::class,
             parentColumns = arrayOf("idTask"),
-            childColumns = arrayOf("idOwner"),
+            childColumns = arrayOf("idOwnerTask"),
             onDelete = ForeignKey.CASCADE
         )
     ]
@@ -18,5 +18,5 @@ data class SubTask(
     @PrimaryKey(autoGenerate = true) val idSubTask : Int,
     val title: String,
     val isCompleted: Boolean,
-    val idOwner : Long,
+    val idOwnerTask : Long,
 )
