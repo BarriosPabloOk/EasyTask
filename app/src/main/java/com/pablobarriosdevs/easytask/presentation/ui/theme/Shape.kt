@@ -1,4 +1,4 @@
-package com.pablobarriosdevs.easytask.ui.theme
+package com.pablobarriosdevs.easytask.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
