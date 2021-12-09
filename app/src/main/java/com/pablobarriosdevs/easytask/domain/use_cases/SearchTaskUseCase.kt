@@ -17,8 +17,7 @@ class SearchTaskUseCase @Inject constructor(
         repository.searchTask(query = query).map { tasks ->
             when (orderType) {
                 OrderType.Ascending -> { tasks.sortedBy { it.task.priority }}
-                OrderType.Descending -> { tasks.sortedBy { it.task.priority }
-                }
+                OrderType.Descending -> { tasks.sortedBy { it.task.priority }}
             }
         }
     }

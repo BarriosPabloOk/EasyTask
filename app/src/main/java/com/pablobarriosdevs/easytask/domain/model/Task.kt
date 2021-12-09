@@ -10,7 +10,7 @@ data class Task(
     val title : String,
     val description : String,
     val createdDate : Long,
-    val editedDate : Long,
+    val targetDate : Long,
     val isCompleted : Boolean,
     val priority : String,
 )

@@ -16,8 +16,8 @@ interface TaskDao {
     suspend fun insertSubTask(subTask: SubTask)
 
     @Transaction
-    @Query("SELECT * FROM task")
-    fun getAllTasks(): Flow<List<TaskWithSubTasks>>
+    @Query("SELECT * FROM task WHERE targetDate = :targetDate")
+    fun getAllTasksByTargetDate(targetDate : Long): Flow<List<TaskWithSubTasks>>
 
     @Transaction
     @Query("SELECT * FROM task WHERE idTask = :taskId")
