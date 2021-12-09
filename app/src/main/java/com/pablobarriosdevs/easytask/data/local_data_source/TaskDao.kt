@@ -1,4 +1,4 @@
-package com.pablobarriosdevs.easytask.data.data_source
+package com.pablobarriosdevs.easytask.data.local_data_source
 
 import androidx.room.*
 import com.pablobarriosdevs.easytask.domain.model.SubTask

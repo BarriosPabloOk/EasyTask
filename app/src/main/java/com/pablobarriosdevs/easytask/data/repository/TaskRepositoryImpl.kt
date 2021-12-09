@@ -1,6 +1,6 @@
 package com.pablobarriosdevs.easytask.data.repository
 
-import com.pablobarriosdevs.easytask.data.data_source.TaskDao
+import com.pablobarriosdevs.easytask.data.local_data_source.TaskDao
 import com.pablobarriosdevs.easytask.domain.model.SubTask
 import com.pablobarriosdevs.easytask.domain.model.Task
 import com.pablobarriosdevs.easytask.domain.model.relations.TaskWithSubTasks

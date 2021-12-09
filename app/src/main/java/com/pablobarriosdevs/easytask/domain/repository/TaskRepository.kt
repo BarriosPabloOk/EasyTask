@@ -7,15 +7,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface TaskRepository {
 
-    suspend fun insertTask(task : Task)
+    suspend fun insertTask(task : Task)//
 
-    suspend fun insertSubTask(subTask : SubTask)
+    suspend fun insertSubTask(subTask : SubTask)//
 
     fun getAllTasks(): Flow<List<TaskWithSubTasks>>
 
     suspend fun getSingleTaskWithSubTask(taskId: Int): TaskWithSubTasks?
 
-    suspend fun deleteTask(task : Task)
+    suspend fun deleteTask(task : Task)//
 
     suspend fun searchTask(query:String): Flow<List<TaskWithSubTasks>>
 

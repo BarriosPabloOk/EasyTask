@@ -1,4 +1,4 @@
-package com.pablobarriosdevs.easytask.data.data_source
+package com.pablobarriosdevs.easytask.data.local_data_source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
