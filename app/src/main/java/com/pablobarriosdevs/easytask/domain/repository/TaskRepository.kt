@@ -11,12 +11,12 @@ interface TaskRepository {
 
     suspend fun insertSubTask(subTask : SubTask)//
 
-    fun getAllTasks(): Flow<List<TaskWithSubTasks>>
+    fun getAllTasksByTargetDate(taskDate :Long): Flow<List<TaskWithSubTasks>>//
 
-    suspend fun getSingleTaskWithSubTask(taskId: Int): TaskWithSubTasks?
+    suspend fun getSingleTaskWithSubTask(taskId: Int): TaskWithSubTasks?//
 
     suspend fun deleteTask(task : Task)//
 
-    suspend fun searchTask(query:String): Flow<List<TaskWithSubTasks>>
+    suspend fun searchTask(query:String): Flow<List<TaskWithSubTasks>>//
 
 }
