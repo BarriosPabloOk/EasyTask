@@ -13,7 +13,7 @@ class GetAllTasksByTargetDateUseCase @Inject constructor(
     private val repository: TaskRepository
 ) {
 
-    suspend operator fun invoke(taskDate :Long, orderType: OrderType): Flow<List<TaskWithSubTasks>> = flow {
+    operator fun invoke(taskDate :Long, orderType: OrderType): Flow<List<TaskWithSubTasks>> = flow {
         repository.getAllTasksByTargetDate(taskDate).map { tasks->
             when (orderType) {
                 is OrderType.Ascending -> {
