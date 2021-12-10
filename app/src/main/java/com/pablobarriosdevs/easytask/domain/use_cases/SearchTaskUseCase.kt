@@ -13,12 +13,10 @@ class SearchTaskUseCase @Inject constructor(
     private val repository: TaskRepository
 ) {
 
-    suspend operator fun invoke(query: String, orderType: OrderType): Flow<List<Task>> = flow {
+    suspend operator fun invoke(query: String): Flow<List<Task>> = flow {
         repository.searchTask(query = query).map { tasks ->
-            when (orderType) {
-                is OrderType.Ascending -> { tasks.sortedBy { it.task.priority }}
-                is OrderType.Descending -> { tasks.sortedBy { it.task.priority }}
-            }
+            tasks.filter { !it.task.isCompleted }.sortedBy { it.task.priority } +
+                    tasks.filter { it.task.isCompleted }.sortedBy{ it.task.priority }
         }
     }
 }

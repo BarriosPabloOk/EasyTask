@@ -16,8 +16,14 @@ class GetAllTasksByTargetDateUseCase @Inject constructor(
     suspend operator fun invoke(taskDate :Long, orderType: OrderType): Flow<List<TaskWithSubTasks>> = flow {
         repository.getAllTasksByTargetDate(taskDate).map { tasks->
             when (orderType) {
-                is OrderType.Ascending -> { tasks.sortedBy { it.task.priority }}
-                is OrderType.Descending -> { tasks.sortedBy { it.task.priority }}
+                is OrderType.Ascending -> {
+                    tasks.filter { !it.task.isCompleted }.sortedBy { it.task.priority } +
+                            tasks.filter { it.task.isCompleted }.sortedBy { it.task.priority }
+                }
+                is OrderType.Descending -> {
+                    tasks.filter { !it.task.isCompleted }.sortedByDescending { it.task.priority } +
+                            tasks.filter { it.task.isCompleted }.sortedByDescending { it.task.priority }
+                }
             }
         }
     }

@@ -13,4 +13,5 @@ data class Task(
     val targetDate : Long,
     val isCompleted : Boolean,
     val priority : Int,
+    val priorityString : String,
 )
