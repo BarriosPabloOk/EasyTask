@@ -1,6 +1,5 @@
-package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
+package com.pablobarriosdevs.easytask.presentation.tasks_screen
 
-import com.pablobarriosdevs.easytask.domain.model.Task
 import com.pablobarriosdevs.easytask.domain.model.relations.TaskWithSubTasks
 import com.pablobarriosdevs.easytask.domain.util.OrderType
 

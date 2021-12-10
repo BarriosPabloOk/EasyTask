@@ -7,13 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.pablobarriosdevs.easytask.domain.model.relations.TaskWithSubTasks
 import com.pablobarriosdevs.easytask.domain.use_cases.wrapper.UseCasesWrapper
 import com.pablobarriosdevs.easytask.domain.util.OrderType
-import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.TaskScreenEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
