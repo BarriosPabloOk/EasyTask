@@ -28,7 +28,7 @@ interface TaskDao {
     suspend fun searchTask(query:String): Flow<List<TaskWithSubTasks>>
 
 
-    suspend fun deleteTask(task : Task)
+    suspend fun deleteTask(taskWithSubTask: TaskWithSubTasks)
 }
 
 
