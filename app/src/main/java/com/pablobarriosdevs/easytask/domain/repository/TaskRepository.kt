@@ -15,7 +15,7 @@ interface TaskRepository {
 
     suspend fun getSingleTaskWithSubTask(taskId: Int): TaskWithSubTasks?//
 
-    suspend fun deleteTask(taskWithSubTask: TaskWithSubTasks)//
+    suspend fun deleteTask(task: Task)//
 
     suspend fun searchTask(query:String): Flow<List<TaskWithSubTasks>>//
 
