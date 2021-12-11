@@ -39,8 +39,9 @@ class TaskScreenViewModel @Inject constructor(
 
                     _taskState.value.tasks.onEach {
                         useCasesWrapper.deleteTaskUseCase(it.task)
-                        for (i in it.subTasks){useCasesWrapper.deleteSubTaskUseCase(i)}
+//                        for (i in it.subTasks){useCasesWrapper.deleteSubTaskUseCase(i)}
                         recentlyDeleteTask =it
+
                     }
 
                 }

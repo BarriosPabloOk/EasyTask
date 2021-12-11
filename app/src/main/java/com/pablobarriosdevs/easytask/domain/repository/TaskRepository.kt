@@ -19,6 +19,6 @@ interface TaskRepository {
 
     fun searchTask(query:String): Flow<List<TaskWithSubTasks>>//
 
-    suspend fun deleteSubTask(subTask: SubTask)
+//    suspend fun deleteSubTask(subTask: SubTask)
 
 }

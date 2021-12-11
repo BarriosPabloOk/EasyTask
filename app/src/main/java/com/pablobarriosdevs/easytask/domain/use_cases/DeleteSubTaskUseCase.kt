@@ -10,6 +10,6 @@ class DeleteSubTaskUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(subTask :SubTask){
-        return repository.deleteSubTask(subTask)
+        //return repository.deleteSubTask(subTask)
     }
 }

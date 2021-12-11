@@ -35,7 +35,7 @@ class TaskRepositoryImpl @Inject constructor(
         return dao.deleteTask(task)
     }
 
-    override suspend fun deleteSubTask(subTask: SubTask) {
-        return dao.deleteSubTask(subTask)
-    }
+//    override suspend fun deleteSubTask(subTask: SubTask) {
+//        return dao.deleteSubTask(subTask)
+//    }
 }

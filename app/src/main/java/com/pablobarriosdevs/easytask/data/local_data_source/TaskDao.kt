@@ -31,8 +31,8 @@ interface TaskDao {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Delete
-    suspend fun deleteSubTask(subTask: SubTask)
+//    @Delete
+//    suspend fun deleteSubTask(subTask: SubTask)
 }
 
 
