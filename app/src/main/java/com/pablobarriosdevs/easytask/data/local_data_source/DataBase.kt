@@ -7,8 +7,7 @@ import com.pablobarriosdevs.easytask.domain.model.Task
 
 @Database(
     entities = [Task::class, SubTask::class],
-    version = 1,
-    exportSchema = false
+    version = 1
 )
 
 abstract class DataBase : RoomDatabase() {

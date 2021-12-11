@@ -38,9 +38,7 @@ class TaskScreenViewModel @Inject constructor(
                 viewModelScope.launch {
                     useCasesWrapper.deleteTaskUseCase(events.task)
                 }
-                recentlyDeleteTask = recentlyDeleteTask?.copy(
-                    task = events.task,
-                )
+                recentlyDeleteTask = events.task
             }
             is TaskScreenEvents.EnterSearch -> {
                 viewModelScope.launch {
