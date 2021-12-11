@@ -25,11 +25,14 @@ interface TaskDao {
 
     @Transaction
     @Query("SELECT * FROM task WHERE title LIKE '%' || :query || '%'")
-    suspend fun searchTask(query:String): Flow<List<TaskWithSubTasks>>
+    fun searchTask(query:String): Flow<List<TaskWithSubTasks>>
 
-    @Transaction
+
     @Delete
-    suspend fun deleteTask(taskWithSubTask: TaskWithSubTasks)
+    suspend fun deleteTask(task: Task)
+
+    @Delete
+    suspend fun deleteSubTask(subTask: SubTask)
 }
 
 

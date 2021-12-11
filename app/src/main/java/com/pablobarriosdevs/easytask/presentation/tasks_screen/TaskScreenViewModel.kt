@@ -36,7 +36,13 @@ class TaskScreenViewModel @Inject constructor(
         when(events){
             is TaskScreenEvents.DeleteTask -> {
                 viewModelScope.launch {
-                    useCasesWrapper.deleteTaskUseCase(events.taskWithSubTasks)
+
+                    _taskState.value.tasks.onEach {
+                        useCasesWrapper.deleteTaskUseCase(it.task)
+                        for (i in it.subTasks){useCasesWrapper.deleteSubTaskUseCase(i)}
+                        recentlyDeleteTask =it
+                    }
+
                 }
                 recentlyDeleteTask = events.taskWithSubTasks
             }

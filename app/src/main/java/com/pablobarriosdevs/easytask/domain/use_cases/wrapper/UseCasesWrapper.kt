@@ -9,4 +9,5 @@ data class UseCasesWrapper(
     val getSingleTaskWithSubTaskUseCase: GetSingleTaskWithSubTaskUseCase,
     val deleteTaskUseCase: DeleteTaskUseCase,
     val searchTaskUseCase: SearchTaskUseCase,
+    val deleteSubTaskUseCase: DeleteSubTaskUseCase,
 )

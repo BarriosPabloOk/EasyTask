@@ -27,11 +27,15 @@ class TaskRepositoryImpl @Inject constructor(
         return dao.getSingleTaskWithSubTask(taskId)
     }
 
-    override suspend fun searchTask(query: String): Flow<List<TaskWithSubTasks>> {
+    override fun searchTask(query: String): Flow<List<TaskWithSubTasks>> {
         return dao.searchTask(query)
     }
 
-    override suspend fun deleteTask(taskWithSubTask: TaskWithSubTasks) {
-        return dao.deleteTask(taskWithSubTask)
+    override suspend fun deleteTask(task: Task) {
+        return dao.deleteTask(task)
+    }
+
+    override suspend fun deleteSubTask(subTask: SubTask) {
+        return dao.deleteSubTask(subTask)
     }
 }
