@@ -6,7 +6,7 @@ import com.pablobarriosdevs.easytask.domain.util.OrderType
 sealed class TaskScreenEvents{
     data class TaskByOrder(val order : OrderType): TaskScreenEvents()
     data class EnterSearch(val query:String): TaskScreenEvents()
-    data class DeleteTask(val task: TaskWithSubTasks): TaskScreenEvents()
+    data class DeleteTask(val taskWithSubTasks: TaskWithSubTasks): TaskScreenEvents()
     object RestoreTask: TaskScreenEvents()
     object SearchFieldVisibility : TaskScreenEvents()
     object OrderSectionVisibility : TaskScreenEvents()

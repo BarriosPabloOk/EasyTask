@@ -31,7 +31,7 @@ class TaskRepositoryImpl @Inject constructor(
         return dao.searchTask(query)
     }
 
-    override suspend fun deleteTask(task : Task) {
-        return dao.deleteTask(task)
+    override suspend fun deleteTask(taskWithSubTask: TaskWithSubTasks) {
+        return dao.deleteTask(taskWithSubTask)
     }
 }
