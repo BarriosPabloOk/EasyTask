@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
-class GetAllTasksByTargetDateUseCase @Inject constructor(
+class GetAllTasksByTodayDateUseCase @Inject constructor(
     private val repository: TaskRepository
 ) {
 
