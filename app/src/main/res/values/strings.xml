@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">EasyTask</string>
+
+    <!--- Task Screen Strings -->
+    <string name="Title">Mis Tareas</string>
+    <string name="to_do">Pendientes</string>
+    <string name="done">Finalizadas</string>
+    <string name="more_component">Más Fechas</string>
+    <string name="add_task">Más Fechas</string>
+    <string name="order_type">Tipo de orden</string>
+
+    <!--- new Screen Strings -->
+    <string name="description">Escribir una descripción</string>
+    <string name="priority">Prioridad</string>
+    <string name="Save">Guardar tarea</string>
+    <string name="update">Actualizar tarea</string>
+
+    <!--- Search Screen Strings -->
+    <string name="search_field">Buscar tareas</string>
+
+
 </resources>

@@ -24,9 +24,9 @@ fun DayComponent(
     cornerRadius: Dp = 20.dp,
     colorBackground: Color = MaterialTheme.colors.primary,
     colorText : Color = MaterialTheme.colors.onPrimary,
-    fontFamily :FontFamily = FontFamily.Default,
     dayName: String,
-    dayNumber: Int,
+    dayNumber: String,
+
 ) {
 
     Box(
@@ -36,26 +36,27 @@ fun DayComponent(
             .background(colorBackground)
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.size(size),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Text(
                 text = dayName.uppercase(),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 5.dp),
                 textAlign = TextAlign.Center,
-                fontSize = MaterialTheme.typography.h6.fontSize,
+                fontSize = MaterialTheme.typography.h5.fontSize,
                 color = colorText,
-                fontFamily = fontFamily
             )
             Text(
                 text = dayNumber.toString(),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontSize = MaterialTheme.typography.h4.fontSize,
+                fontSize = MaterialTheme.typography.h3.fontSize,
                 color = colorText,
-                fontFamily = fontFamily
             )
 
         }
@@ -68,6 +69,7 @@ fun DayComponent(
 fun Preview() {
     DayComponent(
         dayName = "lun",
-        dayNumber = 10
+        dayNumber = "10",
+
     )
 }

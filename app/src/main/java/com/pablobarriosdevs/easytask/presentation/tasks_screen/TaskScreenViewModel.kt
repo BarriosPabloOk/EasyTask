@@ -12,22 +12,44 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class TaskScreenViewModel @Inject constructor(
     private val useCasesWrapper: UseCasesWrapper
 ): ViewModel() {
-    
-    
+
+    val weekStr = SimpleDateFormat("EEEE dd/MM/yyyy", Locale.getDefault())
+    val nameDayStr = SimpleDateFormat("EEE ", Locale.getDefault())
+    val numberDayStr = SimpleDateFormat("dd", Locale.getDefault())
+
     private val _taskState = mutableStateOf<TaskState>(TaskState())
     val taskState : State<TaskState> = _taskState
+
+    private val _todayState = mutableStateOf<Date>(Date())
+    val todayState : State<Date> = _todayState
+
+    private val _weekState = mutableStateOf<List<Date>>(listOf())
+    val weekState : State<List<Date>> = _weekState
+
+    private val _calendarState = mutableStateOf<Calendar>(Calendar.getInstance())
+    val calendarState : State<Calendar> = _calendarState
 
     var getTaskJob : Job? = null
 
     var recentlyDeleteTask : TaskWithSubTasks? = null
 
     init {
+
+        viewModelScope.launch {
+            _weekState.value = useCasesWrapper.rowCalendarUseCase(calendarState.value)
+            useCasesWrapper.getAllTasksByTargetDateUseCase(
+                todayState.value.time,
+                OrderType.Descending)
+
+        }
 
     }
 
@@ -97,5 +119,7 @@ class TaskScreenViewModel @Inject constructor(
                 )
             }.launchIn(viewModelScope)
     }
+
+
 
 }

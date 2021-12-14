@@ -14,16 +14,21 @@ class GetAllTasksByTargetDateUseCase @Inject constructor(
 ) {
 
     operator fun invoke(taskDate :Long, orderType: OrderType): Flow<List<TaskWithSubTasks>> = flow {
-        repository.getAllTasksByTargetDate(taskDate).map { tasks->
+        repository.getAllTasksByTodayDate(taskDate).map { tasks->
             when (orderType) {
                 is OrderType.Ascending -> {
-                    tasks.filter { !it.task.isCompleted }.sortedBy { it.task.priority } +
-                            tasks.filter { it.task.isCompleted }.sortedBy { it.task.priority }
+                    tasks.filter { !it.task.isCompleted }.sortedBy { it.task.createdDate } +
+                            tasks.filter { it.task.isCompleted }.sortedBy { it.task.createdDate }
                 }
                 is OrderType.Descending -> {
+                    tasks.filter { !it.task.isCompleted }.sortedByDescending { it.task.createdDate } +
+                            tasks.filter { it.task.isCompleted }.sortedByDescending { it.task.createdDate }
+                }
+                OrderType.HighFirsts -> {
                     tasks.filter { !it.task.isCompleted }.sortedByDescending { it.task.priority } +
                             tasks.filter { it.task.isCompleted }.sortedByDescending { it.task.priority }
                 }
+
             }
         }
     }

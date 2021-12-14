@@ -10,4 +10,5 @@ data class UseCasesWrapper(
     val deleteTaskUseCase: DeleteTaskUseCase,
     val searchTaskUseCase: SearchTaskUseCase,
     val deleteSubTaskUseCase: DeleteSubTaskUseCase,
+    val rowCalendarUseCase: RowCalendarUseCase,
 )
