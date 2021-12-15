@@ -21,7 +21,7 @@ class TaskScreenViewModel @Inject constructor(
     private val useCasesWrapper: UseCasesWrapper
 ): ViewModel() {
 
-    val weekStr = SimpleDateFormat("EEEE dd/MM/yyyy", Locale.getDefault())
+    val dateStr = SimpleDateFormat("EEEE dd/MM/yyyy", Locale.getDefault())
     val nameDayStr = SimpleDateFormat("EEE ", Locale.getDefault())
     val numberDayStr = SimpleDateFormat("dd", Locale.getDefault())
 

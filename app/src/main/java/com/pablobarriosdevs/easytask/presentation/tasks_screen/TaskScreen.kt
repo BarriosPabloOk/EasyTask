@@ -1,12 +1,17 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen
 
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.pablobarriosdevs.easytask.R
 import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.ActionButton
 import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.BottomBar
+import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.TopBar
+import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.WeeklyRowCalendar
 
 @Composable
 fun TaskScreen(
@@ -18,7 +23,15 @@ fun TaskScreen(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {},
+        topBar = {
+                 TopBar(
+                     background = Color.White ,
+                     contentColor = Color.LightGray,
+                     searchAction = {},
+                     title = stringResource(id = R.string.title),
+                     todayDate = viewModel.dateStr.format(viewModel.todayState.value.time)
+                 )
+        },
         bottomBar = {
             BottomBar(
                 background =MaterialTheme.colors.primary,
@@ -35,8 +48,17 @@ fun TaskScreen(
             )
         },
         floatingActionButtonPosition = FabPosition.Center,
-        isFloatingActionButtonDocked = true
+        isFloatingActionButtonDocked = true,
+
     ) {
+        WeeklyRowCalendar(
+            daysList = viewModel.weekState.value,
+            todayDate =viewModel.todayState.value ,
+            dayFormat = { viewModel.nameDayStr.format(it) },
+            numberFormat = { viewModel.numberDayStr.format(it)}
+        )
+
+
 
     }
 

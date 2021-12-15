@@ -1,13 +1,14 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.pablobarriosdevs.easytask.presentation.tasks_screen.TaskScreenViewModel
 import java.util.*
 
@@ -15,25 +16,41 @@ import java.util.*
 fun WeeklyRowCalendar(
     daysList: List<Date>,
     todayDate: Date,
-    dayFormat :() ->String,
-    numberFormat:()-> String
+    dayFormat :(Date) ->String,
+    numberFormat:(Date)-> String
 ) {
+    Divider(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 5.dp)
+    )
+
     LazyRow(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(5.dp)
     ){
         items(daysList){day->
 
             DayComponent(
-                dayName = dayFormat(),
-                dayNumber = numberFormat(),
+                dayName = dayFormat(day),
+                dayNumber = numberFormat(day),
                 colorBackground = if(todayDate.time == day.time)
                     MaterialTheme.colors.primary else Color.White,
                 colorText = if(todayDate.time == day.time)
                     MaterialTheme.colors.onPrimary else Color.Black.copy(alpha = 0.7f),
             )
+            Spacer(modifier = Modifier.height(5.dp))
         }
         item { MoreDatesComponent() }
 
+
     }
+
+    Divider(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 5.dp)
+    )
 
 }
