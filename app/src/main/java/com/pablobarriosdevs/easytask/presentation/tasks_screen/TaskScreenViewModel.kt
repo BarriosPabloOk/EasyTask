@@ -1,5 +1,6 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen
 
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -31,11 +32,12 @@ class TaskScreenViewModel @Inject constructor(
     private val _todayState = mutableStateOf<Date>(Date())
     val todayState : State<Date> = _todayState
 
-    private val _weekState = mutableStateOf<List<Date>>(listOf())
-    val weekState : State<List<Date>> = _weekState
+    private val _monthCalendarState = mutableStateOf<List<Date>>(listOf())
+    val monthCalendarState : State<List<Date>> = _monthCalendarState
 
-    private val _calendarState = mutableStateOf<Calendar>(Calendar.getInstance())
-    val calendarState : State<Calendar> = _calendarState
+
+    private val _listState = LazyListState()
+    val listState : LazyListState = _listState
 
     var getTaskJob : Job? = null
 
@@ -44,10 +46,18 @@ class TaskScreenViewModel @Inject constructor(
     init {
 
         viewModelScope.launch {
-            _weekState.value = useCasesWrapper.rowCalendarUseCase(calendarState.value)
-            useCasesWrapper.getAllTasksByTargetDateUseCase(
-                todayState.value.time,
-                OrderType.Descending)
+            _monthCalendarState.value = useCasesWrapper.rowCalendarUseCase()
+
+            getAllTaskByDate(todayState.value.time, orderType = OrderType.Descending )
+
+//            _monthCalendarState.value.forEachIndexed { index, date ->
+//                if (date.time == _todayState.value.time) _listState.animateScrollToItem(
+//                    index = index,
+//                    scrollOffset = 5
+//                )
+//            }
+
+
 
         }
 
@@ -104,6 +114,11 @@ class TaskScreenViewModel @Inject constructor(
                 getAllTaskByDate(
                     targetDate = taskState.value.date.timeInMillis,
                     orderType = events.order)
+            }
+            is TaskScreenEvents.CheckedDate -> {
+                _taskState.value = taskState.value.copy(
+                    checkedDate = events.date
+                )
             }
         }
     }

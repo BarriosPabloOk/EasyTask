@@ -9,16 +9,20 @@ class RowCalendarUseCase @Inject constructor(
 
 ) {
 
-    suspend operator fun invoke(calendar: Calendar) : List<Date>{
+    val cal = Calendar.getInstance()
 
-        val list = mutableListOf<Date>()
+    suspend operator fun invoke() : List<Date>{
+        val monthlyCalendar = cal.clone() as Calendar
+        val dates = mutableListOf<Date>()
+        monthlyCalendar.set(Calendar.DAY_OF_MONTH, 1)
+        val maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
+        dates.clear()
 
-        for (i in 0 until Calendar.DAY_OF_WEEK) {
-            val setStart = calendar.set(Calendar.DAY_OF_WEEK, 1)
-            val days = calendar.add(Calendar.DAY_OF_WEEK, i)
-
-            list.add(calendar.time)
+        while (dates.size < maxDaysInMonth){
+            dates.add(monthlyCalendar.time)
+            monthlyCalendar.add(Calendar.DAY_OF_MONTH,1)
         }
-        return list
+
+        return dates
     }
 }

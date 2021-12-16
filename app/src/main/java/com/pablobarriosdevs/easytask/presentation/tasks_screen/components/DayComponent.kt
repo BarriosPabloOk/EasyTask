@@ -1,6 +1,7 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -23,9 +24,11 @@ fun DayComponent(
     size: Dp = 100.dp,
     cornerRadius: Dp = 20.dp,
     colorBackground: Color = MaterialTheme.colors.primary,
-    colorText : Color = MaterialTheme.colors.onPrimary,
+    colorText: Color = MaterialTheme.colors.onPrimary,
+    colorBorder: Color = MaterialTheme.colors.secondary,
     dayName: String,
     dayNumber: String,
+    isChecked: Boolean
 
 ) {
 
@@ -34,6 +37,12 @@ fun DayComponent(
             .size(size)
             .clip(RoundedCornerShape(cornerRadius))
             .background(colorBackground)
+            .border(
+                width = 2.dp,
+                color = if (isChecked) colorBorder else Color.Transparent,
+                shape = RoundedCornerShape(cornerRadius)
+            )
+
     ) {
         Column(
             modifier = Modifier.size(size),
@@ -70,6 +79,7 @@ fun Preview() {
     DayComponent(
         dayName = "lun",
         dayNumber = "10",
+        isChecked = true
 
-    )
+        )
 }

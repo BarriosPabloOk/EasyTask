@@ -1,12 +1,10 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen
 
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.pablobarriosdevs.easytask.R
 import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.ActionButton
 import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.BottomBar
@@ -15,7 +13,7 @@ import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.Weekly
 
 @Composable
 fun TaskScreen(
-    navController: NavController,
+    //navController: NavController,
     viewModel: TaskScreenViewModel = hiltViewModel(),
 ) {
 
@@ -52,10 +50,12 @@ fun TaskScreen(
 
     ) {
         WeeklyRowCalendar(
-            daysList = viewModel.weekState.value,
+            daysList = viewModel.monthCalendarState.value,
             todayDate =viewModel.todayState.value ,
             dayFormat = { viewModel.nameDayStr.format(it) },
-            numberFormat = { viewModel.numberDayStr.format(it)}
+            numberFormat = { viewModel.numberDayStr.format(it)},
+            checkedDate = viewModel.taskState.value.checkedDate,
+
         )
 
 
