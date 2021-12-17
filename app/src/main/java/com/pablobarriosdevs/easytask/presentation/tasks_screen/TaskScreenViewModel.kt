@@ -35,10 +35,6 @@ class TaskScreenViewModel @Inject constructor(
     private val _monthCalendarState = mutableStateOf<List<Date>>(listOf())
     val monthCalendarState : State<List<Date>> = _monthCalendarState
 
-
-    private val _listState = LazyListState()
-    val listState : LazyListState = _listState
-
     var getTaskJob : Job? = null
 
     var recentlyDeleteTask : TaskWithSubTasks? = null
@@ -49,16 +45,6 @@ class TaskScreenViewModel @Inject constructor(
             _monthCalendarState.value = useCasesWrapper.rowCalendarUseCase()
 
             getAllTaskByDate(todayState.value.time, orderType = OrderType.Descending )
-
-//            _monthCalendarState.value.forEachIndexed { index, date ->
-//                if (date.time == _todayState.value.time) _listState.animateScrollToItem(
-//                    index = index,
-//                    scrollOffset = 5
-//                )
-//            }
-
-
-
         }
 
     }

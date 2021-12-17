@@ -32,13 +32,11 @@ fun WeeklyRowCalendar(
             .fillMaxWidth()
             .padding(horizontal = 5.dp)
     )
-    val lazyState = rememberLazyListState()
-    val scope = rememberCoroutineScope()
+
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(5.dp),
-        state = lazyState
     ) {
 
         items(daysList) { day ->
@@ -64,12 +62,5 @@ fun WeeklyRowCalendar(
             .fillMaxWidth()
             .padding(horizontal = 5.dp)
     )
-    LaunchedEffect(key1 = scope,){
-        daysList.onEachIndexed { index, date ->
-            if (date.time == todayDate.time) lazyState.animateScrollToItem(
-                index = index,
-                scrollOffset = 5)
-        }
-    }
 
 }

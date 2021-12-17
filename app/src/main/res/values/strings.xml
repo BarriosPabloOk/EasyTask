@@ -10,7 +10,7 @@
     <string name="order_type">Tipo de orden</string>
     <string name="search_desc">search icon</string>
 
-    <!--- new Screen Strings -->
+    <!--- new task Screen Strings -->
     <string name="description">Escribir una descripción</string>
     <string name="priority">Prioridad</string>
     <string name="Save">Guardar tarea</string>
