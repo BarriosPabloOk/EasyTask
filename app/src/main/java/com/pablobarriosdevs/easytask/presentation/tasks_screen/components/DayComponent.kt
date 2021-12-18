@@ -2,6 +2,7 @@ package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -18,17 +19,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.pablobarriosdevs.easytask.common.makeFormat
 
 @Composable
 fun DayComponent(
-    size: Dp = 100.dp,
+    clickable : ()->Unit,
+    size: Dp = 70.dp,
     cornerRadius: Dp = 20.dp,
     colorBackground: Color = MaterialTheme.colors.primary,
     colorText: Color = MaterialTheme.colors.onPrimary,
-    colorBorder: Color = MaterialTheme.colors.secondary,
+    colorBorder: Color = MaterialTheme.colors.primary,
     dayName: String,
     dayNumber: String,
-    isChecked: Boolean
+    isChecked: Boolean,
+
 
 ) {
 
@@ -41,7 +45,7 @@ fun DayComponent(
                 width = 2.dp,
                 color = if (isChecked) colorBorder else Color.Transparent,
                 shape = RoundedCornerShape(cornerRadius)
-            )
+            ).clickable { clickable() }
 
     ) {
         Column(
@@ -51,20 +55,20 @@ fun DayComponent(
         ) {
 
             Text(
-                text = dayName.uppercase(),
+                text = dayName.makeFormat(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 5.dp),
                 textAlign = TextAlign.Center,
-                fontSize = MaterialTheme.typography.h5.fontSize,
+                fontSize = MaterialTheme.typography.h6.fontSize,
                 color = colorText,
             )
             Text(
-                text = dayNumber.toString(),
+                text = dayNumber,
                 modifier = Modifier
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontSize = MaterialTheme.typography.h3.fontSize,
+                fontSize = MaterialTheme.typography.h5.fontSize,
                 color = colorText,
             )
 
@@ -79,7 +83,7 @@ fun Preview() {
     DayComponent(
         dayName = "lun",
         dayNumber = "10",
-        isChecked = true
-
+        isChecked = false,
+        clickable = {}
         )
 }

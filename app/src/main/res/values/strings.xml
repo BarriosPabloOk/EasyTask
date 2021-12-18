@@ -15,6 +15,7 @@
     <string name="priority">Prioridad</string>
     <string name="Save">Guardar tarea</string>
     <string name="update">Actualizar tarea</string>
+    <string name="add_icon">Agregar subtarea</string>
 
     <!--- Search Screen Strings -->
     <string name="search_field">Buscar tareas</string>

@@ -1,6 +1,7 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -19,7 +20,8 @@ import com.pablobarriosdevs.easytask.R
 
 @Composable
 fun MoreDatesComponent(
-    size: Dp = 100.dp,
+    clickable:()->Unit,
+    size: Dp = 70.dp,
     cornerRadius: Dp = 20.dp,
     colorBackground: Color = MaterialTheme.colors.primary,
     colorText: Color = MaterialTheme.colors.onPrimary,
@@ -29,7 +31,8 @@ fun MoreDatesComponent(
         modifier = Modifier
             .size(size)
             .clip(RoundedCornerShape(cornerRadius))
-            .background(colorBackground),
+            .background(colorBackground)
+            .clickable { clickable() },
         contentAlignment = Alignment.Center
     ) {
 
@@ -39,7 +42,7 @@ fun MoreDatesComponent(
             modifier = Modifier
                 .fillMaxWidth(),
             textAlign = TextAlign.Center,
-            fontSize = MaterialTheme.typography.h5.fontSize,
+            fontSize = MaterialTheme.typography.h6.fontSize,
             color = colorText,
         )
 
@@ -51,5 +54,7 @@ fun MoreDatesComponent(
 @Preview
 @Composable
 fun MoreDatesPreview() {
-    MoreDatesComponent()
+    MoreDatesComponent(
+        clickable = {}
+    )
 }

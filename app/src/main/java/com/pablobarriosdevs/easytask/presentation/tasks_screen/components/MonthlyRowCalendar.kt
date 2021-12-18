@@ -1,30 +1,26 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.pablobarriosdevs.easytask.presentation.tasks_screen.TaskScreenViewModel
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import com.pablobarriosdevs.easytask.common.format
 import java.util.*
 
 @Composable
-fun WeeklyRowCalendar(
+fun MonthlyRowCalendar(
     daysList: List<Date>,
-    todayDate: Date,
     dayFormat: (Date) -> String,
     numberFormat: (Date) -> String,
     checkedDate: Date,
+    calendar: Calendar,
+
+
 
     ) {
     Divider(
@@ -36,7 +32,8 @@ fun WeeklyRowCalendar(
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(5.dp),
+            .padding(5.dp)
+            ,
     ) {
 
         items(daysList) { day ->
@@ -44,15 +41,18 @@ fun WeeklyRowCalendar(
             DayComponent(
                 dayName = dayFormat(day),
                 dayNumber = numberFormat(day),
-                colorBackground = if (todayDate.time == day.time)
+                colorBackground = if (calendar.get(Calendar.DAY_OF_MONTH) == day.format("dd").toInt() )
                     MaterialTheme.colors.primary else Color.White,
-                colorText = if (todayDate.time == day.time)
+                colorText = if (calendar.get(Calendar.DAY_OF_MONTH) == day.format("dd").toInt())
                     MaterialTheme.colors.onPrimary else Color.Black.copy(alpha = 0.7f),
-                isChecked = day == checkedDate
+                isChecked = day.format("dd").toInt() == checkedDate.format("dd").toInt(),
+                clickable = {}
+
             )
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.width(5.dp))
+
         }
-        item { MoreDatesComponent() }
+        item { MoreDatesComponent(clickable = {}) }
 
 
     }

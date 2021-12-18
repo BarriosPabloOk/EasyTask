@@ -7,8 +7,8 @@ import java.util.*
 data class TaskState(
     val tasks : List<TaskWithSubTasks> = emptyList(),
     val order : OrderType = OrderType.Ascending,
-    val date : Calendar = Calendar.getInstance(),
-    val checkedDate: Date = date.time,
+    val calendar : Calendar = Calendar.getInstance(),
+    val checkedDate: Date = Date(),
     val isSearchVisible : Boolean = false,
     val isOrderSectionVisible : Boolean = false,
 )

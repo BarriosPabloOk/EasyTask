@@ -1,4 +1,4 @@
-package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
+package com.pablobarriosdevs.easytask.presentation.new_task_screen.components
 
 
 import androidx.compose.foundation.layout.Column
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,16 +17,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import com.pablobarriosdevs.easytask.R
-import com.pablobarriosdevs.easytask.presentation.tasks_screen.TaskScreenViewModel
 
 
 @Composable
-fun TopBar(
+fun NewTaskTopBar(
     background: Color,
     contentColor: Color,
     title: String,
-    todayDate : String,
-    searchAction : () ->Unit,
+    addAction : () ->Unit
 
 ) {
     TopAppBar(
@@ -35,16 +34,9 @@ fun TopBar(
             ) {
                 Text(
                     text = title,
-                    fontSize = MaterialTheme.typography.h4.fontSize,
-                    //fontStyle = FontStyle.Italic,
+                    fontSize = MaterialTheme.typography.h2.fontSize,
+                    fontStyle = FontStyle.Italic,
                     fontWeight = FontWeight.SemiBold
-                )
-
-                Text(
-                    text = todayDate,
-                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                    //fontStyle = FontStyle.Italic,
-                    fontWeight = FontWeight.Thin
                 )
 
             }
@@ -55,12 +47,11 @@ fun TopBar(
             .height(100.dp),
         actions = {
 
-            IconButton(onClick = { searchAction() }) {
-                Icon(
-                    imageVector = Icons.Rounded.Search,
-                    contentDescription = stringResource(id = R.string.search_desc)
+            IconButton(onClick = {addAction() }) {
+                Icon(imageVector = Icons.Rounded.Add,
+                    contentDescription = stringResource(id = R.string.add_icon)
                 )
             }
-        },
-    )
+        }
+        )
 }

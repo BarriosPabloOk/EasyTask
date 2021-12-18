@@ -11,7 +11,7 @@ import com.pablobarriosdevs.easytask.domain.model.Task
     exportSchema = false
 )
 
-abstract class DataBase : RoomDatabase() {
+abstract class TaskDataBase : RoomDatabase() {
 
     abstract val taskDao : TaskDao
 

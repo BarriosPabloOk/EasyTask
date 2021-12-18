@@ -1,6 +1,5 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen
 
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -29,7 +28,7 @@ class TaskScreenViewModel @Inject constructor(
     private val _taskState = mutableStateOf<TaskState>(TaskState())
     val taskState : State<TaskState> = _taskState
 
-    private val _todayState = mutableStateOf<Date>(Date())
+    private val _todayState= mutableStateOf<Date>(Date())
     val todayState : State<Date> = _todayState
 
     private val _monthCalendarState = mutableStateOf<List<Date>>(listOf())
@@ -98,7 +97,7 @@ class TaskScreenViewModel @Inject constructor(
             is TaskScreenEvents.TaskByOrder -> {
                 if(_taskState.value.order::class == events.order::class){ return}
                 getAllTaskByDate(
-                    targetDate = taskState.value.date.timeInMillis,
+                    targetDate = taskState.value.calendar.timeInMillis,
                     orderType = events.order)
             }
             is TaskScreenEvents.CheckedDate -> {
