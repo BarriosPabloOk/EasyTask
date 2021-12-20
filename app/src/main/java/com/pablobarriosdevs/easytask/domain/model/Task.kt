@@ -9,9 +9,7 @@ data class Task(
     @PrimaryKey val idTask : Int? = null,
     val title : String,
     val description : String,
-    val createdDate : Long,
-    val todayDate : Long,
+    val created : Long,
+    val currentDate : Long,
     val isCompleted : Boolean,
-    val priority : Int,
-    val priorityString : String,
 )

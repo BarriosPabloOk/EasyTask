@@ -11,7 +11,7 @@ interface TaskRepository {
 
     suspend fun insertSubTask(subTask : SubTask)//
 
-    fun getAllTasksByTodayDate(todayDate :Long): Flow<List<TaskWithSubTasks>>//
+    fun getTasksByCurrentDate(currentDate :Long): Flow<List<TaskWithSubTasks>>//
 
     suspend fun getSingleTaskWithSubTask(taskId: Int): TaskWithSubTasks?//
 

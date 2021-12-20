@@ -24,8 +24,8 @@ import com.pablobarriosdevs.easytask.common.makeFormat
 @Composable
 fun DayComponent(
     clickable : ()->Unit,
-    size: Dp = 70.dp,
-    cornerRadius: Dp = 20.dp,
+    size: Dp = 50.dp,
+    cornerRadius: Dp = 10.dp,
     colorBackground: Color = MaterialTheme.colors.primary,
     colorText: Color = MaterialTheme.colors.onPrimary,
     colorBorder: Color = MaterialTheme.colors.primary,
@@ -50,7 +50,7 @@ fun DayComponent(
     ) {
         Column(
             modifier = Modifier.size(size),
-            verticalArrangement = Arrangement.SpaceEvenly,
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
@@ -60,7 +60,7 @@ fun DayComponent(
                     .fillMaxWidth()
                     .padding(top = 5.dp),
                 textAlign = TextAlign.Center,
-                fontSize = MaterialTheme.typography.h6.fontSize,
+                fontSize = MaterialTheme.typography.body2.fontSize,
                 color = colorText,
             )
             Text(
@@ -68,7 +68,7 @@ fun DayComponent(
                 modifier = Modifier
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontSize = MaterialTheme.typography.h5.fontSize,
+                fontSize = MaterialTheme.typography.body1.fontSize,
                 color = colorText,
             )
 

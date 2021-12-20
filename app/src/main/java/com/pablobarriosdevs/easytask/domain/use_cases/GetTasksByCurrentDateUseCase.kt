@@ -8,14 +8,13 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
-class SearchTaskUseCase @Inject constructor(
+class GetTasksByCurrentDateUseCase @Inject constructor(
     private val repository: TaskRepository
 ) {
 
-    suspend operator fun invoke(query: String): Flow<List<TaskWithSubTasks>> = flow {
-        repository.searchTask(query = query).map { tasks ->
-            tasks.filter { !it.task.isCompleted }.sortedBy { it.task.created } +
-                    tasks.filter { it.task.isCompleted }.sortedBy{ it.task.created }
+    operator fun invoke(currentDate: Long): Flow<List<TaskWithSubTasks>> = flow {
+        repository.getTasksByCurrentDate(currentDate).map {
+                tasks -> tasks.sortedBy { it.task.created }
         }
     }
 }

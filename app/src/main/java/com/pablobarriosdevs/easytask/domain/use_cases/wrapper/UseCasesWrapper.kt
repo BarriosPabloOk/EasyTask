@@ -5,7 +5,7 @@ import com.pablobarriosdevs.easytask.domain.use_cases.*
 data class UseCasesWrapper(
     val insertTaskUseCase: InsertTaskUseCase,
     val insertSubTaskUseCase: InsertSubTaskUseCase,
-    val getAllTasksByTargetDateUseCase: GetAllTasksByTodayDateUseCase,
+    val getTasksByCurrentDateUseCase: GetTasksByCurrentDateUseCase,
     val getSingleTaskWithSubTaskUseCase: GetSingleTaskWithSubTaskUseCase,
     val deleteTaskUseCase: DeleteTaskUseCase,
     val searchTaskUseCase: SearchTaskUseCase,

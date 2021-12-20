@@ -14,3 +14,8 @@ fun Date.format(pattern: String = "dd"): String{
     return SimpleDateFormat(pattern, Locale.getDefault())
         .format(this).toString()
 }
+
+fun Long.formatLong(pattern: String = "dd"): String{
+    return SimpleDateFormat(pattern, Locale.getDefault())
+        .format(this).toString()
+}

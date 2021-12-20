@@ -1,6 +1,5 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,59 +13,46 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.pablobarriosdevs.easytask.R
-import com.pablobarriosdevs.easytask.domain.util.Priority
-import java.util.*
 
 @Composable
 fun TaskComponent(
+    modifier: Modifier = Modifier,
     title: String,
-    date: String,
-    priority:String,
+    subTasksAmount: Int,
     isChecked: Boolean,
     onCheckedChange: () -> Unit
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(5.dp),
 
         ) {
-        Image(
-            modifier = Modifier.align(Alignment.CenterStart),
-            painter = when (priority) {
-                Priority.HIGH.name -> painterResource(id = R.mipmap.priority_high)
-                Priority.MEDIUM.name -> painterResource(id = R.mipmap.priority_medium)
-                Priority.LOW.name -> painterResource(id = R.mipmap.priority_low)
-                else -> painterResource(id = R.mipmap.alerta_sin_fondo)
-            },
-            contentDescription = stringResource(id = R.string.priority)
-        )
+
         Column(
             modifier = Modifier
-                .align(Alignment.Center)
+                .align(Alignment.CenterStart)
         ) {
             Text(
                 text = title,
                 fontWeight = FontWeight.SemiBold,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-                fontSize = MaterialTheme.typography.h5.fontSize,
+                fontSize = MaterialTheme.typography.h6.fontSize,
             )
-            Text(
-                text = date,
-                fontWeight = FontWeight.Thin,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                color = Color.LightGray
-            )
+            if (subTasksAmount > 0) {
+                Text(
+                    text = "Contiene $subTasksAmount subtareas pendientes",
+                    fontWeight = FontWeight.Thin,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    fontSize = MaterialTheme.typography.body1.fontSize,
+                    color = Color.LightGray
+                )
+            }
 
         }
 
@@ -79,7 +65,7 @@ fun TaskComponent(
             colors = CheckboxDefaults.colors(
                 checkedColor = MaterialTheme.colors.surface,
                 checkmarkColor = MaterialTheme.colors.primary
-            )
+            ),
         )
     }
 }

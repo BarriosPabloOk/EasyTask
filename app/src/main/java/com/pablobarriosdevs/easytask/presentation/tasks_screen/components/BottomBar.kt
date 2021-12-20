@@ -12,18 +12,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.pablobarriosdevs.easytask.R
-import com.pablobarriosdevs.easytask.domain.util.OrderType
 
 @Composable
 fun BottomBar(
     background: Color,
     contentColor : Color,
     order: () -> Unit,
-    orderType: OrderType,
     highFirst: () -> Unit,
 
     ) {
@@ -36,20 +33,6 @@ fun BottomBar(
         Row(modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically) {
-            IconButton(
-                onClick = { order() },
-                modifier = Modifier.padding(end = 70.dp)
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .size(30.dp)
-                        .padding(0.dp),
-                    imageVector = if (orderType is OrderType.Descending)
-                        Icons.Rounded.ArrowDownward else Icons.Rounded.ArrowUpward,
-                    contentDescription = stringResource(id = R.string.order_type)
-                )
-
-            }
 
             IconButton(
                 onClick = { highFirst() }

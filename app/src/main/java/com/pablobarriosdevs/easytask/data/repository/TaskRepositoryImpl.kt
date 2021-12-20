@@ -19,8 +19,8 @@ class TaskRepositoryImpl @Inject constructor(
         return dao.insertSubTask(subTask)
     }
 
-    override fun getAllTasksByTodayDate(todayDate : Long): Flow<List<TaskWithSubTasks>> {
-        return dao.getAllTasksByTodayDate(todayDate)
+    override fun getTasksByCurrentDate(currentDate : Long): Flow<List<TaskWithSubTasks>> {
+        return dao.getTasksByCurrentDate(currentDate)
     }
 
     override suspend fun getSingleTaskWithSubTask(taskId: Int): TaskWithSubTasks? {

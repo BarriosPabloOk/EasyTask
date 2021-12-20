@@ -1,14 +1,11 @@
 package com.pablobarriosdevs.easytask.presentation.tasks_screen
 
 import com.pablobarriosdevs.easytask.domain.model.relations.TaskWithSubTasks
-import com.pablobarriosdevs.easytask.domain.util.OrderType
 import java.util.*
 
 data class TaskState(
     val tasks : List<TaskWithSubTasks> = emptyList(),
-    val order : OrderType = OrderType.Ascending,
     val calendar : Calendar = Calendar.getInstance(),
-    val checkedDate: Date = Date(),
+    val selectedDate: Date = Date(),
     val isSearchVisible : Boolean = false,
-    val isOrderSectionVisible : Boolean = false,
 )

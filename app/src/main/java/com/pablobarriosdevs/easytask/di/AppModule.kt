@@ -39,7 +39,7 @@ object AppModule {
         return UseCasesWrapper(
         insertTaskUseCase= InsertTaskUseCase(repository = repository),
         insertSubTaskUseCase= InsertSubTaskUseCase(repository = repository),
-        getAllTasksByTargetDateUseCase= GetAllTasksByTodayDateUseCase(repository = repository),
+        getTasksByCurrentDateUseCase= GetTasksByCurrentDateUseCase(repository = repository),
         getSingleTaskWithSubTaskUseCase= GetSingleTaskWithSubTaskUseCase(repository = repository),
         deleteTaskUseCase= DeleteTaskUseCase(repository = repository),
         searchTaskUseCase= SearchTaskUseCase(repository = repository),
