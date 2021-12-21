@@ -21,10 +21,6 @@ class TaskScreenViewModel @Inject constructor(
     private val useCasesWrapper: UseCasesWrapper
 ) : ViewModel() {
 
-    val dateStr = SimpleDateFormat("EEEE dd/MM/yyyy", Locale.getDefault())
-    val nameDayStr = SimpleDateFormat("EEE ", Locale.getDefault())
-    val numberDayStr = SimpleDateFormat("dd", Locale.getDefault())
-
     private val _taskState = mutableStateOf<TaskState>(TaskState())
     val taskState: State<TaskState> = _taskState
 
@@ -43,7 +39,7 @@ class TaskScreenViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _monthCalendarState.value = useCasesWrapper.rowCalendarUseCase()
+            //_monthCalendarState.value = useCasesWrapper.rowCalendarUseCase()
             getAllTaskByDate(todayState.value.time)
         }
     }

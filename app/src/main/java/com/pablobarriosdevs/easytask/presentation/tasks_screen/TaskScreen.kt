@@ -12,9 +12,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.pablobarriosdevs.easytask.R
 import com.pablobarriosdevs.easytask.common.format
 import com.pablobarriosdevs.easytask.common.formatLong
 import com.pablobarriosdevs.easytask.presentation.tasks_screen.components.*
@@ -64,34 +67,13 @@ fun TaskScreen(
                         .clickable { },
                     currentDate = taskState.value.selectedDate
                 )
+                Text(
+                    text = stringResource(id = R.string.swipe_to),
+                    fontSize = MaterialTheme.typography.body2.fontSize,
+                    fontWeight = FontWeight.Thin
+                )
                 Spacer(modifier = Modifier.height(30.dp))
 
-//                Divider()
-//                LazyRow(modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(vertical = 7.dp),
-//                    state = lazyState
-//                ){
-//                    items( monthState.value){day ->
-//                        DayComponent(
-//                            dayName =day.format("EEE") ,
-//                            dayNumber =day.format()  ,
-//                            colorBorder = Color.Black,
-//                            colorBackground = if (today.value.format() == day.format() )
-//                                MaterialTheme.colors.primary else Color.White,
-//                            colorText = if (today.value.format() == day.format()  )
-//                                MaterialTheme.colors.onPrimary else Color.Black.copy(alpha = 0.7f),
-//                            isChecked = taskState.value.selectedDate == day,
-//                            clickable = {viewModel.onEvent(TaskScreenEvents.CheckedDate(day))}
-//                        )
-//                        Spacer(modifier = Modifier.width(5.dp))
-//
-//
-//                    }
-//
-//                }
-//                Divider()
-//            }
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
